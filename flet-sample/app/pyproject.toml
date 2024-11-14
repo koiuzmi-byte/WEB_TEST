@@ -1,0 +1,30 @@
+[project]
+name = "flet-sample"
+version = "0.1.0"
+description = "Add your description here"
+authors = [{ name = "k-ibaraki", email = "ibaraki@ncdc.co.jp" }]
+dependencies = ["flet>=0.21.1"]
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+start = 'src.flet_sample.run_app:run'
+
+[tool.rye]
+managed = true
+dev-dependencies = ["mypy>=1.9.0"]
+
+[tool.rye.scripts]
+build = { cmd = "flet build web" }
+serv = { cmd = "cd build/web && python -m http.server" }
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
